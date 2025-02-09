@@ -15,8 +15,8 @@ const CandidateSearch = () => {
     const fetchCandidates = async () => {
       setLoading(true);
       const data = await searchGithub();
-      console.log('Fetched data:', data); // Log the fetched data
-      // Transform the data to match the Candidate interface if necessary
+      console.log('Fetched data:', data); 
+
       const transformedData = data.map((user: any) => ({
         avatar: user.avatar_url || 'N/A',
         name: user.name || user.login || 'N/A',
@@ -27,7 +27,7 @@ const CandidateSearch = () => {
         company: user.company || 'N/A',
         bio: user.bio || 'N/A',
       }));
-      console.log('Transformed data:', transformedData); // Log the transformed data
+      console.log('Transformed data:', transformedData); 
       setCandidates(transformedData);
       setLoading(false);
     };
@@ -35,12 +35,23 @@ const CandidateSearch = () => {
     fetchCandidates();
   }, []);
 
+  useEffect(() => {
+    const storedCandidates = localStorage.getItem('potentialCandidates');
+    if (storedCandidates) {
+      setPotentialCandidates(JSON.parse(storedCandidates));
+    }
+  }, [setPotentialCandidates]);
+
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % candidates.length);
   };
 
   const handleAdd = () => {
-    setPotentialCandidates((prev) => [...prev, candidates[currentIndex]]);
+    setPotentialCandidates((prev) => {
+      const updatedCandidates = [...prev, candidates[currentIndex]];
+      localStorage.setItem('potentialCandidates', JSON.stringify(updatedCandidates));
+      return updatedCandidates;
+    });
     handleNext();
   };
 

@@ -8,7 +8,9 @@ const SavedCandidates = () => {
   const { potentialCandidates, setPotentialCandidates } = useOutletContext<{ potentialCandidates: Candidate[], setPotentialCandidates: React.Dispatch<React.SetStateAction<Candidate[]>> }>();
 
   const handleRemove = (index: number) => {
-    setPotentialCandidates((prev) => prev.filter((_, i) => i !== index));
+    const updatedCandidates = potentialCandidates.filter((_, i) => i !== index);
+    setPotentialCandidates(updatedCandidates);
+    localStorage.setItem('potentialCandidates', JSON.stringify(updatedCandidates));
   };
 
   return (
