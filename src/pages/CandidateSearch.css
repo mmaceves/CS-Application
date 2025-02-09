@@ -1,0 +1,54 @@
+.circle-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;.circle-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      
+      .add-button {
+        background-color: green;
+        color: black; /* Set the icon color to black */
+      }
+      
+      .remove-button {
+        background-color: red;
+        color: black; /* Set the icon color to black */
+      }
+  }
+  
+  .add-button {
+    background-color: green;
+    color: white;
+  }
+  
+  .remove-button {
+    background-color: red;
+    color: white;
+  }
+
+  .avatar {
+    width: 200px; 
+    height: 200px;  
+  }
+
+  img {
+    height: 100px; 
+    width: 90px;
+  }
